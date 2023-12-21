@@ -64,8 +64,6 @@ const Navbar = () => {
           <ul className="menu menu-horizontal px-1">{navlinks}</ul>
         </div>
         <div className="navbar-end gap-2">
-            <p className="hidden md:block md:text-lg">{user?.displayName}</p>
-            <img className="h-[55px] rounded-full" src={user?.photoURL} alt="" />
           {
             user ? 
             <Link to="/login">

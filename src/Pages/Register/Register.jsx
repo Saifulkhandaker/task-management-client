@@ -36,7 +36,7 @@ const Register = () => {
             Swal.fire({
               title: 'Success!',text: 'Successfully registered',icon: 'success',confirmButtonText: 'Cool' });
               setTimeout(() => {
-                navigate('/');
+                navigate('/dashboard');
               }, 3000);
           })
         })

@@ -9,6 +9,7 @@ import About from "../Pages/About/About";
 import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
 import PrivateRoute from "./PrivateRoute";
+import CreateTask from "../Components/CreateTask";
    
   export const router = createBrowserRouter([
     {
@@ -30,6 +31,10 @@ import PrivateRoute from "./PrivateRoute";
         {
           path: '/about',
           element: <About></About>
+        },
+        {
+          path: '/createtask',
+          element: <CreateTask></CreateTask>
         },
         {
           path: '/login',

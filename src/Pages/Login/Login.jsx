@@ -21,7 +21,7 @@ const Login = () => {
         Swal.fire({
             title: 'Success!',text: 'Successfully logged in',icon: 'success',confirmButtonText: 'Cool' });
             setTimeout(() => {
-            navigate('/');
+            navigate('/dashboard');
             }, 3000);
         })
     }
@@ -36,7 +36,7 @@ const Login = () => {
           Swal.fire({
             title: 'Success!',text: 'Successfully logged in',icon: 'success',confirmButtonText: 'Cool' });
             setTimeout(() => {
-              navigate(location?.state ? location.state : '/');
+              navigate(location?.state ? location.state : '/dashboard');
             }, 3000);
         })
         .catch((err) => {
