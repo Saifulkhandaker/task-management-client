@@ -1,6 +1,11 @@
+import { data } from "autoprefixer";
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 
 const CreateTask = () => {
+
+    const navigate = useNavigate()
 
     const handleAddTask = e => {
         e.preventDefault();
@@ -9,10 +14,32 @@ const CreateTask = () => {
         const description = form.description.value; 
         const deadlines = form.deadlines.value; 
         const priority = form.priority.value; 
-        const newTask = {
-            taskName, description, deadlines, priority
-        }
+        const newTask = { taskName, description, deadlines, priority }
         console.log(newTask);
+
+        // send data to the server
+        fetch('http://localhost:5000/task',{
+            method: "POST",
+            headers: {
+                "content-type": "application/json",
+              },
+            body: JSON.stringify(newTask),
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+            if (data.insertedId) {
+                Swal.fire({
+                  title: "Success!",
+                  text: "Task Added Successfully",
+                  icon: "success",
+                  confirmButtonText: "Cool",
+                });
+                setTimeout(() => {
+                    navigate('/dashboard');
+                    }, 3000);
+            }
+        })
     }
 
     return (
