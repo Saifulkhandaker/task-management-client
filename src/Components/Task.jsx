@@ -1,12 +1,13 @@
 import React, { useContext, useState } from 'react';
 import { AuthContext } from '../Providers/AuthProvider';
 import Swal from 'sweetalert2';
+import { GoStopwatch } from "react-icons/go";
 
 const Task = ({task, tasks, setTasks}) => {
     const {user} = useContext(AuthContext);
     const [status, setStatus] = useState('In Progress');
 
-    const {_id, taskName, description } = task;
+    const {_id, taskName, description, deadlines, priority } = task;
 
     // handle status 
     const handleStatusChange = () => {
@@ -58,10 +59,10 @@ const Task = ({task, tasks, setTasks}) => {
                         </button> 
                     </div>
                     <p>{description}</p>
-                    <div className="flex justify-between">
-                        <div className='flex text-center items-center gap-2'>
-                            <img className='w-12 rounded-full' src={user.photoURL} alt="" />
-                            <small>{user.displayName}</small>
+                    <div className="flex justify-between items-center">
+                        <div className=''>
+                            <p className='flex items-center gap-2 text-red-500'><GoStopwatch />{deadlines}</p>
+                            <p className='text-green-400'>{priority}</p>
                         </div>
                       <div>
                       <button
