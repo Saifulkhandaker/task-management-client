@@ -26,7 +26,8 @@ import CreateTask from "../Components/CreateTask";
         },
         {
           path: '/dashboard',
-          element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>
+          element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
+          loader: () => fetch('http://localhost:5000/task')
         },
         {
           path: '/about',
