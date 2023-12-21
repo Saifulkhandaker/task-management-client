@@ -4,7 +4,7 @@ import user3 from '../assets/images/user3.jpg';
 
 const Users = () => {
     return (
-        <div className='mt-16 w-[90%] mx-auto'>
+        <div className='mt-16 w-[90%] mx-auto mb-10'>
             <h1 className='text-center text-4xl font-medium'>Our Users</h1>
             <p className='text-center text-2xl mt-2'>They are all loving it.</p>
             <div className='mt-10    grid grid-cols-3 gap-3'>
