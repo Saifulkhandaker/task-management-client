@@ -1,12 +1,12 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { AuthContext } from '../../Providers/AuthProvider';
 import { Link, useLoaderData } from 'react-router-dom';
 import Task from '../../Components/Task';
 
 const Dashboard = () => {
     const {user} = useContext(AuthContext);
-    const tasks = useLoaderData();
-    console.log(tasks);
+    const loadedTasks = useLoaderData();
+    const [tasks, setTasks] = useState(loadedTasks)
 
     return (
         <div className='w-[80%] mx-auto mt-10 min-h-screen'>
@@ -20,6 +20,8 @@ const Dashboard = () => {
                 {
                     tasks.map(task => <Task
                     task={task}
+                    tasks={tasks}
+                    setTasks={setTasks}
                     ></Task>)
                 }
             </div>

@@ -37,7 +37,7 @@ const CreateTask = () => {
                 });
                 setTimeout(() => {
                     navigate('/dashboard');
-                    }, 3000);
+                    }, 2000);
             }
         })
     }

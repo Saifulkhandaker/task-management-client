@@ -1,7 +1,8 @@
 import React, { useContext, useState } from 'react';
 import { AuthContext } from '../Providers/AuthProvider';
+import Swal from 'sweetalert2';
 
-const Task = ({task}) => {
+const Task = ({task, tasks, setTasks}) => {
     const {user} = useContext(AuthContext);
     const [status, setStatus] = useState('In Progress');
 
@@ -13,8 +14,34 @@ const Task = ({task}) => {
       };
 
     // handle delete
-    const handleDelete = _id => {
-        console.log(_id);
+    const handleDelete = (_id) => {   
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+          }).then((result) => {     
+            if (result.isConfirmed) {
+            fetch(`http://localhost:5000/task/${_id}`, {
+                method: 'DELETE'
+            })
+            .then(res => res.json())
+            .then(data => {
+                if(data.deletedCount > 0){
+                      Swal.fire({
+                        title: "Deleted!",
+                        text: "Your task has been deleted.",
+                        icon: "success"
+                    });
+                    const remaining = tasks.filter(tas => tas._id !== _id);
+                    setTasks(remaining);
+                }
+            })
+            }
+          });
     }
 
 
