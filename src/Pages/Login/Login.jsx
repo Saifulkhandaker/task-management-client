@@ -1,12 +1,31 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import login from "../../assets/images/login.avif"
 import { BsGoogle } from 'react-icons/bs';
+import { useContext, useState } from "react";
+import { AuthContext } from "../../Providers/AuthProvider";
+import Swal from "sweetalert2";
 
 const Login = () => {
+    const {googleSignIn, signIn}= useContext(AuthContext);
+    const location = useLocation();
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [error, setError]= useState(''); 
 
-const handleGoogle = (e) => {
+    const navigate = useNavigate()
 
-}
+    // handle google sign in
+    const handleGoogle = () => {
+        googleSignIn()
+        .then(result => {
+        Swal.fire({
+            title: 'Success!',text: 'Successfully logged in',icon: 'success',confirmButtonText: 'Cool' });
+            setTimeout(() => {
+            navigate('/');
+            }, 3000);
+        })
+    }
+
 
 const handleLogin = (e) => {
 
@@ -20,9 +39,9 @@ const handleLogin = (e) => {
           </div>
           <div>
             <div className="hero ">
-              <div className="hero-content flex-col border border-[#7C94E3] py-3 px-5">
+              <div className="hero-content flex-col border border-[#2FCCAF] py-3 px-5">
                 <div className="text-center lg:text-left">
-                  <h1 className="text-5xl font-bold text-[#7C94E3]">Login</h1>
+                  <h1 className="text-5xl font-bold text-[#2FCCAF]">Login</h1>
                 </div>
                 <div className="card flex-shrink-0 w-full max-w-sm ">
                   <form onSubmit={handleLogin} className="card-body">
@@ -53,9 +72,9 @@ const handleLogin = (e) => {
                       />
                     </div>
                     <div className="form-control mt-6">
-                      <button className="btn text-white bg-[#7C94E3]">Login</button>
+                      <button className="btn text-white bg-[#2FCCAF]">Login</button>
                       <p>or sign with <br />
-                        <button onClick={handleGoogle} className="btn w-full text-white bg-[#7C94E3]" ><BsGoogle></BsGoogle>Google</button>
+                        <button onClick={handleGoogle} className="btn w-full text-white bg-[#2FCCAF]" ><BsGoogle></BsGoogle>Google</button>
                       </p>
                     </div>
                   </form>

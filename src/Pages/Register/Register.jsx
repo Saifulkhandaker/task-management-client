@@ -15,9 +15,9 @@ const Register = () => {
           </div>
           <div>
             <div className="hero">
-              <div className="hero-content flex-col border border-[#7C94E3]  py-3 px-5">
+              <div className="hero-content flex-col border border-[#2FCCAF]  py-3 px-5">
                 <div className="text-center lg:text-left">
-                  <h1 className="text-5xl font-bold text-[#7C94E3]">Register</h1>
+                  <h1 className="text-5xl font-bold text-[#2FCCAF]">Register</h1>
                 </div>
                 <div className="card flex-shrink-0 w-full max-w-sm ">
                   <form onSubmit={handleRegister} className="card-body">
@@ -70,7 +70,7 @@ const Register = () => {
                       />
                     </div>
                     <div className="form-control mt-6">
-                      <button className="btn text-white bg-[#7C94E3]">Register</button>
+                      <button className="btn text-white bg-[#2FCCAF]">Register</button>
                       
                     </div>
                   </form>
