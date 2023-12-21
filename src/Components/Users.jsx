@@ -4,10 +4,12 @@ import user3 from '../assets/images/user3.jpg';
 
 const Users = () => {
     return (
-        <div className='mt-16 w-[90%] mx-auto mb-10'>
-            <h1 className='text-center text-4xl font-medium'>Our Users</h1>
-            <p className='text-center text-2xl mt-2'>They are all loving it.</p>
-            <div className='mt-10    grid grid-cols-3 gap-3'>
+        <div className='mt-16 w-[90%] mx-auto mb-10 overflow-x-hidden'>
+            <div data-aos="fade-down" data-aos-duration="2000">
+                <h1 className='text-center text-4xl font-medium'>Our Users</h1>
+                <p className='text-center text-2xl mt-2'>They are all loving it.</p>
+            </div>
+            <div className='mt-10 grid grid-cols-3 gap-3' data-aos="fade-up" data-aos-duration="2000">
                 <div className="card  bg-base-100 shadow-xl border-2">
                     <figure className="px-10 pt-10">
                         <img src={user1} alt="Shoes" className="rounded-xl" />
