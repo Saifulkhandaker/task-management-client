@@ -26,10 +26,26 @@ const Login = () => {
         })
     }
 
-
-const handleLogin = (e) => {
-
-}
+    // handlelogin
+    const handleLogin = (e) => {
+      e.preventDefault();
+      if((email, password)){
+        signIn(email, password)
+        .then(result => {
+          setError('');
+          Swal.fire({
+            title: 'Success!',text: 'Successfully logged in',icon: 'success',confirmButtonText: 'Cool' });
+            setTimeout(() => {
+              navigate(location?.state ? location.state : '/');
+            }, 3000);
+        })
+        .catch((err) => {
+          setError('Invalid email or password');
+          Swal.fire({
+            title: 'Error!',text: 'Invalid email or password',icon: 'error',confirmButtonText: 'Error' });
+        })
+      }  
+   }
 
     return (
              <div className="mt-10 mb-10 text-center items-center">
