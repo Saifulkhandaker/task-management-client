@@ -6,6 +6,7 @@ import Task from '../../Components/Task';
 const Dashboard = () => {
     const {user} = useContext(AuthContext);
     const loadedTasks = useLoaderData();
+    console.log(loadedTasks);
     const [tasks, setTasks] = useState(loadedTasks);
 
     return (
